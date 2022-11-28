@@ -1,4 +1,4 @@
-FROM arm32v7/alpine
+FROM alpine
 
 RUN apk add --no-cache \
             nginx \
