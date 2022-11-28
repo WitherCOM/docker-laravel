@@ -44,7 +44,6 @@ RUN apk add --no-cache \
     wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin && \
     chown nginx:nginx /srv/http -R
 
-RUN mkdir -p /var/spool/cron/crontabs
 COPY overlay /
 WORKDIR /srv/http
 
