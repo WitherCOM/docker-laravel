@@ -44,6 +44,7 @@ RUN apk add --no-cache \
     wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin && \
     chown nginx:nginx /srv/http -R
 
+RUN crontab -l | { cat; echo "* * * * * /usr/bin/php /srv/http/artisan schedule:run >> /dev/null 2>&1"; } | crontab -
 COPY overlay /
 WORKDIR /srv/http
 
