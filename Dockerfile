@@ -37,8 +37,6 @@ RUN    install -d -o nginx -g nginx \
             /var/log/php \
             /var/log/supervisor
 
-RUN ln -s /usr/bin/php81 /usr/bin/php
-
 RUN apk add --no-cache \
             npm \
             php81-xmlreader \
@@ -51,8 +49,6 @@ COPY overlay /
 WORKDIR /srv/http
 
 EXPOSE 80
-
-HEALTHCHECK CMD /usr/bin/php81 /healthcheck.php
 
 CMD ["supervisord", "-n", "-c", "/etc/supervisord.conf"]
 
