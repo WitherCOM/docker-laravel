@@ -28,6 +28,9 @@ RUN apk add --no-cache \
             php81-sqlite3 \
             php81-tokenizer \
             php81-xml \
+            npm \
+            php81-xmlreader \
+            php81-xmlwriter \
             ssmtp \
             supervisor
 RUN mkdir /srv/http
@@ -36,14 +39,7 @@ RUN    install -d -o nginx -g nginx \
             /var/log/nginx \
             /var/log/php \
             /var/log/supervisor
-
-RUN apk add --no-cache \
-            npm \
-            php81-xmlreader \
-            php81-xmlwriter && \
-    wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin && \
-    chown nginx:nginx /srv/http -R
-
+RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 RUN crontab -l | { cat; echo "* * * * * /usr/bin/php /srv/http/artisan schedule:run >> /dev/null 2>&1"; } | crontab -
 COPY overlay /
 WORKDIR /srv/http
