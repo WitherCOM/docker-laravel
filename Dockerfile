@@ -31,7 +31,7 @@ RUN apk add --no-cache \
             php81-xmlreader \
             php81-xmlwriter \
             ssmtp \
-            supervisor
+            supervisor && apk del python3
 RUN mkdir /srv/http
 RUN    install -d -o nginx -g nginx \
             /run/php \
