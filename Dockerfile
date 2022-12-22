@@ -28,7 +28,6 @@ RUN apk add --no-cache \
             php81-sqlite3 \
             php81-tokenizer \
             php81-xml \
-            npm \
             php81-xmlreader \
             php81-xmlwriter \
             ssmtp \
