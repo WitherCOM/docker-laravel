@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.20
 
 RUN apk add --no-cache \
             nginx \
@@ -30,7 +30,8 @@ RUN apk add --no-cache \
             php82-xml \
             php82-xmlreader \
             php82-xmlwriter \
-            ssmtp
+            ssmtp \ 
+            wget
 RUN mkdir /srv/http
 RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 COPY overlay /
