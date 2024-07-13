@@ -32,8 +32,9 @@ RUN apk add --no-cache \
             php82-xmlwriter \
             ssmtp \ 
             wget
+RUN ln -s /usr/bin/php82 /usr/bin/php
 RUN mkdir /srv/http
-RUN wget -O - https://getcomposer.org/installer | /usr/bin/php82 -- --filename=composer --install-dir=/usr/bin
+RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
 COPY overlay /
 WORKDIR /srv/http
