@@ -30,12 +30,11 @@ RUN apk add --no-cache \
             php82-xml \
             php82-xmlreader \
             php82-xmlwriter \
-            ssmtp
+            ssmtp \ 
+            wget
 RUN mkdir /srv/http
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-RUN php composer-setup.php --install-dir /usr/bin
-RUN php -r "unlink('composer-setup.php');"
-    
+RUN wget -O - https://getcomposer.org/installer | /usr/bin/php82 -- --filename=composer --install-dir=/usr/bin
+
 COPY overlay /
 WORKDIR /srv/http
 EXPOSE 80
