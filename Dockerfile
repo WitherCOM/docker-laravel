@@ -37,6 +37,7 @@ RUN mkdir /srv/http
 RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
 COPY overlay /
+RUN chmod +x /entrypoint.sh
 WORKDIR /srv/http
 EXPOSE 80
 ENTRYPOINT ["/entrypoint.sh"]
