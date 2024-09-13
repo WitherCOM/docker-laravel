@@ -30,6 +30,8 @@ RUN apk add --no-cache \
             php82-xml \
             php82-xmlreader \
             php82-xmlwriter \
+            php82-zip \
+            php82-intl \
             ssmtp \ 
             wget
 RUN ln -s /usr/bin/php82 /usr/bin/php
