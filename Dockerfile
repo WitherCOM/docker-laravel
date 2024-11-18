@@ -4,37 +4,37 @@ RUN apk add --no-cache \
             nginx \
             nginx-mod-http-headers-more \
             nginx-mod-http-brotli \
-            php82 \
-            php82-bcmath \
-            php82-ctype \
-            php82-curl \
-            php82-dom \
-            php82-fileinfo \
-            php82-fpm \
-            php82-gd \
-            php82-iconv \
-            php82-json \
-            php82-ldap \
-            php82-mbstring \
-            php82-mysqli \
-            php82-pdo \
-            php82-pdo_mysql \
-            php82-pdo_sqlite \
-            php82-pecl-redis \
-            php82-phar \
-            php82-session \
-            php82-sodium \
-            php82-simplexml \
-            php82-sqlite3 \
-            php82-tokenizer \
-            php82-xml \
-            php82-xmlreader \
-            php82-xmlwriter \
-            php82-zip \
-            php82-intl \
+            php83 \
+            php83-bcmath \
+            php83-ctype \
+            php83-curl \
+            php83-dom \
+            php83-fileinfo \
+            php83-fpm \
+            php83-gd \
+            php83-iconv \
+            php83-json \
+            php83-ldap \
+            php83-mbstring \
+            php83-mysqli \
+            php83-pdo \
+            php83-pdo_mysql \
+            php83-pdo_sqlite \
+            php83-pecl-redis \
+            php83-phar \
+            php83-session \
+            php83-sodium \
+            php83-simplexml \
+            php83-sqlite3 \
+            php83-tokenizer \
+            php83-xml \
+            php83-xmlreader \
+            php83-xmlwriter \
+            php83-zip \
+            php83-intl \
             ssmtp \ 
             wget
-RUN ln -s /usr/bin/php82 /usr/bin/php
+RUN ln -s /usr/bin/php83 /usr/bin/php
 RUN mkdir /srv/http
 RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
