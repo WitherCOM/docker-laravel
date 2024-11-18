@@ -7,8 +7,6 @@ mkdir -p /run/php
 
 ### Cache laravel config here
 php artisan config:cache
-### Run migration
-php artisan migrate
-
+php artisan view:cache
 
 exec "$@"
