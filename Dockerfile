@@ -34,7 +34,6 @@ RUN apk add --no-cache \
             php83-intl \
             ssmtp \ 
             wget
-RUN ln -s /usr/bin/php83 /usr/bin/php
 RUN mkdir /srv/http
 RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
