@@ -22,7 +22,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
         pdo \
         pdo_mysql \
         pdo_sqlite \
-        pecl-redis \
+        redis \
         phar \
         session \
         sodium \
