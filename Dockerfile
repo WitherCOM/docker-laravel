@@ -5,7 +5,7 @@ FROM dunglas/frankenphp:php${PHP_VERSION}-alpine
 ENV SERVER_NAME=:80
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
-    PKG_VERSION=$(echo "$PHP_VERSION" | tr -d . | head -c 2) apk add --no-cache \
+    PKG_VERSION=$(echo "$PHP_VERSION" | tr -d . | head -c 2); apk add --no-cache \
         php$PKG_VERSION-bcmath \
         php$PKG_VERSION-ctype \
         php$PKG_VERSION-curl \
