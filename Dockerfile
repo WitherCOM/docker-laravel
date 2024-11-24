@@ -33,6 +33,7 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
         php$VERSION-zip \
         php$VERSION-intl \
         php$VERSION-exif \
+        php$VERSION-soap \
         ssmtp
 COPY overlay /
 RUN chmod +x /entrypoint.sh
