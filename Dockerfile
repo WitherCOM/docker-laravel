@@ -1,46 +1,45 @@
-FROM alpine:3.20
+ARG PHP_VERSION="8.3"
 
-RUN apk add --no-cache \
-            nginx \
-            nginx-mod-http-headers-more \
-            nginx-mod-http-brotli \
-            php82 \
-            php82-bcmath \
-            php82-ctype \
-            php82-curl \
-            php82-dom \
-            php82-fileinfo \
-            php82-fpm \
-            php82-gd \
-            php82-iconv \
-            php82-json \
-            php82-ldap \
-            php82-mbstring \
-            php82-mysqli \
-            php82-pdo \
-            php82-pdo_mysql \
-            php82-pdo_sqlite \
-            php82-pecl-redis \
-            php82-phar \
-            php82-session \
-            php82-sodium \
-            php82-simplexml \
-            php82-sqlite3 \
-            php82-tokenizer \
-            php82-xml \
-            php82-xmlreader \
-            php82-xmlwriter \
-            php82-zip \
-            php82-intl \
-            ssmtp \ 
-            wget
-RUN ln -s /usr/bin/php82 /usr/bin/php
-RUN mkdir /srv/http
-RUN wget -O - https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
+FROM dunglas/frankenphp:php${PHP_VERSION}-alpine
 
+ENV SERVER_NAME=:80
+
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    VERSION=$(echo "$PHP_VERSION" | tr -d .) apk add --no-cache \
+        php$VERSION-bcmath \
+        php$VERSION-ctype \
+        php$VERSION-curl \
+        php$VERSION-dom \
+        php$VERSION-fileinfo \
+        php$VERSION-fpm \
+        php$VERSION-gd \
+        php$VERSION-iconv \
+        php$VERSION-json \
+        php$VERSION-ldap \
+        php$VERSION-mbstring \
+        php$VERSION-mysqli \
+        php$VERSION-pdo \
+        php$VERSION-pdo_mysql \
+        php$VERSION-pdo_sqlite \
+        php$VERSION-pecl-redis \
+        php$VERSION-phar \
+        php$VERSION-session \
+        php$VERSION-sodium \
+        php$VERSION-simplexml \
+        php$VERSION-sqlite3 \
+        php$VERSION-tokenizer \
+        php$VERSION-xml \
+        php$VERSION-xmlreader \
+        php$VERSION-xmlwriter \
+        php$VERSION-zip \
+        php$VERSION-intl \
+        php$VERSION-exif \
+        ssmtp
 COPY overlay /
 RUN chmod +x /entrypoint.sh
-WORKDIR /srv/http
+WORKDIR /app
 EXPOSE 80
+EXPOSE 80/udp
+
 ENTRYPOINT ["/entrypoint.sh"]
 
