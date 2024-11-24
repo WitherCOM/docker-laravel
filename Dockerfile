@@ -11,7 +11,6 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
         php$VERSION-curl \
         php$VERSION-dom \
         php$VERSION-fileinfo \
-        php$VERSION-fpm \
         php$VERSION-gd \
         php$VERSION-iconv \
         php$VERSION-json \
