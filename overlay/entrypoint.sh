@@ -3,7 +3,7 @@
 export COMMAND="$1" # web, queue, schedule
 
 echo "Running pre config script"
-if [ -f /app/preconfig.sh ]
+if [ -f /app/preconfig.sh ]; then
     source /app/preconfig.sh
 fi
 
